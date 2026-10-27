@@ -1,0 +1,35 @@
+EJEMPLO PARA COMPARAR: este archivo no forma parte de la aplicación.
+
+// Antes: nombres confusos y código que ya no se utiliza.
+List<string> diccionario = new(); // Es una lista, aunque el nombre dice otra cosa.
+string dscT = "Estudiar";
+int n = 0;
+string dato1 = "Estudiar";
+string dato2 = "Pendiente";
+
+void Hacer()
+{
+    diccionario.Add(dscT);
+    n++;
+}
+
+void GuardarEnArchivoAntiguo()
+{
+    File.WriteAllText("respaldo-viejo.txt", dscT);
+}
+
+// File.WriteAllText("tareas.txt", dscT);
+
+DESPUÉS: revisar Tarea.cs y FormularioTareas.cs.
+
+1. Código zombie: se eliminan GuardarEnArchivoAntiguo y la llamada comentada.
+   No hay llamadas a ese método ni un requisito de guardar archivos.
+2. Código autodocumentado: AgregarTarea y Completar describen su acción.
+3. Intención: cantidadPendientes explica qué representa el número.
+4. Sin desinformación: tareas es una BindingList<Tarea>, no un diccionario.
+   Descripcion y EstaCompletada distinguen contenido y estado; dato1/dato2 no.
+5. Pronunciables y buscables: Descripcion reemplaza dscT;
+   cantidadPendientes reemplaza n. Se pueden leer y buscar completos.
+
+El código zombie se conserva aquí solo como evidencia del ANTES.
+El proyecto compila únicamente los archivos de la carpeta Tareas.
